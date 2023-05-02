@@ -19,6 +19,15 @@ class Application < Sinatra::Base
     return "Julia, Mary, Karim"
   end
 
+  post "/sort-names" do
+    names = params[:names]
+
+    names_array = names.split(",")
+    names_array.sort!
+    
+    return names_array.join(",")
+  end
+
   # GET /
   # Root path (homepage, index page)
 

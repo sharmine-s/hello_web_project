@@ -1,4 +1,17 @@
-# GET /names Route Design Recipe
+# POST /sort-names Route Design Recipe
+Request:
+
+`POST http://localhost:9292/sort-names`
+
+With body parameters:
+
+`names=Joe,Alice,Zoe,Julia,Kieran`
+
+Expected response (sorted list of names):
+
+`Alice,Joe,Julia,Kieran,Zoe`
+_______
+
 ## 1. Design the Route Signature
 
 You'll need to include:
@@ -7,9 +20,9 @@ You'll need to include:
   * any query parameters (passed in the URL)
   * or body parameters (passed in the request body)
 
-|What does it do?|Method|Path|Query parameters?|Body parameters?|
-|--|--|--|--|--|
-|Returns a list of names|`GET`|`/names`|-|-|
+|What does it do?|Method|Path|Body parameters?|
+|--|--|--|--|
+|Returns a sorted list of given names|`POST`|`/sort-names`|`names=Joe,Alice,Zoe,Julia,Kieran`|
 
 ## 2. Design the Response
 
@@ -21,9 +34,9 @@ Your response might return plain text, JSON, or HTML code.
 
 _Replace the below with your own design. Think of all the different possible responses your route will return._
 
-When calling `get` on `/names`
+When calling `post` on `/sort-names` with body params `names=Joe,Alice,Zoe,Julia,Kieran`
 ```
-Julia, Mary, Karim
+Alice,Joe,Julia,Kieran,Zoe
 ```
 
 ## 3. Write Examples
@@ -33,11 +46,11 @@ _Replace these with your own design._
 ```
 # Request:
 
-GET /names
+POST /sort-names
 
 # Expected response:
 
-Julia, Mary, Karim
+Alice,Joe,Julia,Kieran,Zoe
 ```
 
 ## 4. Encode as Tests Examples
@@ -54,12 +67,12 @@ describe Application do
   let(:app) { Application.new }
 
   context "GET /names" do
-    it "returns Julia, Mary, Karim" do
+    it "returns sorted list of names" do
       # Assuming the post with id 1 exists.
-      response = get('/names')
+      response = post('/sort-names')
 
       expect(response.status).to eq(200)
-      expect(response.body).to eq("Julia, Mary, Karim")
+      expect(response.body).to eq("Alice,Joe,Julia,Kieran,Zoe")
     end
   end
 end
