@@ -25,4 +25,13 @@ describe Application do
     end
   end
 
+  context "GET /names" do
+    it 'returns Julia, Mary, Karim' do
+      # Assuming the post with id 1 exists.
+      response = get('/names')
+
+      expect(response.status).to eq(200)
+      expect(response.body).to eq("Julia, Mary, Karim")
+    end
+  end
 end

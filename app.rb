@@ -9,14 +9,18 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  # GET /
-  # Root path (homepage, index page)
-
-  get '/hello' do
+  get "/hello" do
     name = params[:name]
 
     return "Hello #{name}!"
   end
+
+  get "/names" do
+    return "Julia, Mary, Karim"
+  end
+
+  # GET /
+  # Root path (homepage, index page)
 
   # get '/' do
   #   return 'Hello!'
