@@ -42,11 +42,11 @@ PLATFORMS
   x86_64-darwin-22
 
 DEPENDENCIES
-  rack-test (~> 2.1)
-  rspec (~> 3.12)
-  sinatra (~> 3.0)
-  sinatra-contrib (~> 3.0)
-  webrick (~> 1.8)
+  rack-test
+  rspec
+  sinatra
+  sinatra-contrib
+  webrick
 
 BUNDLED WITH
    2.4.12
