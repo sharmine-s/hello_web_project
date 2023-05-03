@@ -9,21 +9,21 @@ describe Application do
 
   # GET /
 
-  context 'GET /hello' do
-    it 'should return "Hello Leo"' do
-      response = get('/hello?name=Leo')
+  # context 'GET /hello' do
+  #   it 'should return "Hello Leo"' do
+  #     response = get('/hello?name=Leo')
 
-      expect(response.status).to be(200)
-      expect(response.body).to eq("Hello Leo!")
-    end
+  #     expect(response.status).to be(200)
+  #     expect(response.body).to eq("Hello Leo!")
+  #   end
 
-    it 'should return "Hello Sharmine"' do
-      response = get('/hello?name=Sharmine')
+  #   it 'should return "Hello Sharmine"' do
+  #     response = get('/hello?name=Sharmine')
 
-      expect(response.status).to be(200)
-      expect(response.body).to eq("Hello Sharmine!")
-    end
-  end
+  #     expect(response.status).to be(200)
+  #     expect(response.body).to eq("Hello Sharmine!")
+  #   end
+  # end
 
   context "GET /names" do
     it 'returns Julia, Mary, Karim' do
@@ -42,6 +42,15 @@ describe Application do
 
       expect(response.status).to eq(200)
       expect(response.body).to eq("Alice,Joe,Julia,Kieran,Zoe")
+    end
+  end
+
+  context "GET /hello" do
+    it "returns greeting message as an html template" do
+      response = get("/hello")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include("<h1>Hello!</h1>")
     end
   end
 end

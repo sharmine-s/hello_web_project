@@ -9,11 +9,11 @@ class Application < Sinatra::Base
     register Sinatra::Reloader
   end
 
-  get "/hello" do
-    name = params[:name]
+  # get "/hello" do
+  #   name = params[:name]
 
-    return "Hello #{name}!"
-  end
+  #   return "Hello #{name}!"
+  # end
 
   get "/names" do
     return "Julia, Mary, Karim"
@@ -26,6 +26,10 @@ class Application < Sinatra::Base
     names_array.sort!
     
     return names_array.join(",")
+  end
+
+  get "/hello" do
+    return erb(:index)
   end
 
   # GET /
