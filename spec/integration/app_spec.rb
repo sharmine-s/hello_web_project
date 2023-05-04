@@ -63,4 +63,20 @@ describe Application do
       expect(response.body).to include('<input type="text" name="task_name" />')
     end
   end
+
+  context "POST /tasks" do
+    it "should create task and return confirmation page" do
+      response = post("/tasks", task_name: "Buy milk")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>You saved task: Buy milk</h1>')
+    end
+
+    it "should create a different task and return confirmation page" do
+      response = post("/tasks", task_name: "Renew gym membership")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<h1>You saved task: Renew gym membership</h1>')
+    end
+  end
 end

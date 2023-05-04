@@ -36,6 +36,11 @@ class Application < Sinatra::Base
     return erb(:new_task)
   end
 
+  post "/tasks" do
+    @task_name = params[:task_name]
+    return erb(:task_Created)
+  end
+
   # GET /
   # Root path (homepage, index page)
 
