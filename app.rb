@@ -32,6 +32,10 @@ class Application < Sinatra::Base
     return erb(:index)
   end
 
+  get "/tasks/new" do
+    return erb(:new_task)
+  end
+
   # GET /
   # Root path (homepage, index page)
 

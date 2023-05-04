@@ -53,4 +53,14 @@ describe Application do
       expect(response.body).to include("<h1>Hello!</h1>")
     end
   end
+
+  context "GET /tasks/new" do
+    it "should return the html form to create a new task" do
+      response = get("/tasks/new")
+
+      expect(response.status).to eq(200)
+      expect(response.body).to include('<form method="POST" action="/tasks">')
+      expect(response.body).to include('<input type="text" name="task_name" />')
+    end
+  end
 end
